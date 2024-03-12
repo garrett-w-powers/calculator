@@ -7,7 +7,7 @@ const makeKey = (display) => {
     key.textContent = display;
     key.setAttribute('class', 'key');
     return key;
-    // key.addEventListener('click', () => null);
+    key.addEventListener('click', () => keyClick);
 };
 
 const makeCalculator = (parent) => {
@@ -33,7 +33,34 @@ const makeCalculator = (parent) => {
     });
 };
 
+const add = (a, b) => a + b;
 
+const subtract = (a, b) => a - b;
+
+const divide = (a, b) => a/b;
+
+const multiply = (a, b) => a*b;
+
+const operate = (op, a, b) => {
+    switch(op) {
+        case "/":
+            divide(a,b);
+            break
+        case "*":
+            multiply(a,b);
+            break;
+        case "+":
+            add(a,b);
+            break;
+        case "-":
+            subtract(a,b);
+            break;
+    }
+}
+
+let a = 0;
+let b = 0;
+let operator = "";
 
 const container = document.querySelector(".container");
 makeCalculator(container);
