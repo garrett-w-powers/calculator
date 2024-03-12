@@ -6,4 +6,33 @@ html body {
 
 .container {
     display: flex;
+    justify-content: center;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+    min-width: 500px;
+    padding: 5%;
+    gap: 5%;
+    background-color: darkgray;
+}
+
+.display {
+    flex: 0;
+    min-height: 20%;
+    background-color: gainsboro;
+}
+.keypad {
+    flex: auto;
+    display: flex;
+    gap: 4%;
+    flex-wrap: wrap;
+    min-height: 70%;
+}
+
+.key {
+    flex: 0;
+    min-width: 22%;
 }

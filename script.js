@@ -4,20 +4,21 @@
 // };
 const makeKey = (display) => {
     const key = document.createElement('button');
-    key.setAttribute('content', display);
-    key.setAttribute('style', 'key');
+    key.textContent = display;
+    key.setAttribute('class', 'key');
+    return key;
     // key.addEventListener('click', () => null);
 };
 
 const makeCalculator = (parent) => {
     const calcDiv = document.createElement('div');
-    calcDiv.setAttribute('style', 'calculator');
+    calcDiv.setAttribute('class', 'calculator');
 
     const display = document.createElement('div');
-    display.setAttribute('style', 'display');
+    display.setAttribute('class', 'display');
 
     const keypad = document.createElement('div');
-    keypad.setAttribute('style', 'keypad');
+    keypad.setAttribute('class', 'keypad');
 
     parent.appendChild(calcDiv);
     calcDiv.appendChild(display);
@@ -26,7 +27,10 @@ const makeCalculator = (parent) => {
     const keys = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", "&divide", "&times", "+", "-", "="
     ];
-    keys.map((k) => keypad.appendChild(makeKey(k)))
+    keys.map((k) => {
+        const newkey = makeKey(k);
+        keypad.appendChild(newkey);
+    });
 };
 
 
