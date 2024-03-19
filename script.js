@@ -2,9 +2,9 @@
 //     this.display = display;
 //     this.output = output;
 // };
-const makeKey = (display) => {
+const makeKey = (val) => {
     const key = document.createElement('button');
-    key.textContent = display;
+    key.textContent = val;
     key.setAttribute('class', 'key');
     return key;
     key.addEventListener('click', () => keyClick);
@@ -16,6 +16,7 @@ const makeCalculator = (parent) => {
 
     const display = document.createElement('div');
     display.setAttribute('class', 'display');
+    display.textContent = displayVal;
 
     const keypad = document.createElement('div');
     keypad.setAttribute('class', 'keypad');
@@ -25,7 +26,7 @@ const makeCalculator = (parent) => {
     calcDiv.appendChild(keypad);
     
     const keys = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", "&divide", "&times", "+", "-", "="
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "C", "&divide", "&times", "+", "-", "="
     ];
     keys.map((k) => {
         const newkey = makeKey(k);
@@ -42,25 +43,42 @@ const divide = (a, b) => a/b;
 const multiply = (a, b) => a*b;
 
 const operate = (op, a, b) => {
+    var output = 0;
     switch(op) {
         case "/":
-            divide(a,b);
+            output = divide(a,b);
             break
         case "*":
-            multiply(a,b);
+            output = multiply(a,b);
             break;
         case "+":
-            add(a,b);
+            output = add(a,b);
             break;
         case "-":
-            subtract(a,b);
+            output = subtract(a,b);
             break;
     }
+    updateDisplay(output);
+};
+
+const updateDisplay = (input) => {
+    const display = document.querySelector(".display")
+    if (input = "c") {
+        clearValues();
+        display.textContent = "";
+    }
+};
+
+const clearValues = () => {
+    a = 0;
+    b = 0;
+    operator = "";
 }
 
 let a = 0;
 let b = 0;
 let operator = "";
+let displayVal = "80085";
 
 const container = document.querySelector(".container");
 makeCalculator(container);
