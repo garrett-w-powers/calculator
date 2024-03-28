@@ -75,7 +75,9 @@ const operate = (op, a, b) => {
 };
 
 const evaluate = (eq) => {
-    
+    while (equation.length > 1) {
+        let calc = equation.findIndex()
+    }
 }
 
 const updateDisplay = (vals) => {
